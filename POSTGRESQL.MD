@@ -4,7 +4,7 @@ SELECT MAX(salary)
 FROM employee
 WHERE salary < (SELECT MAX(salary) FROM employee);
 
-2)5. Find Employees Having Highest Salary in Each Department
+2)Find Employees Having Highest Salary in Each Department
 
 SELECT department_id,
        MAX(salary)

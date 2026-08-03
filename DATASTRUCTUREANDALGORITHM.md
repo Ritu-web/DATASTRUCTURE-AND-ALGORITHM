@@ -1,52 +1,62 @@
-1929. Concatenation of Array:-
-Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
+# Data Structures and Algorithms
 
-Specifically, ans is the concatenation of two nums arrays.
+## 1. 1929. Concatenation of Array
 
-Return the array ans.
+### Problem Statement
 
- 
+Given an integer array `nums` of length `n`, you want to create an array `ans` of length `2n` where `ans[i] == nums[i]` and `ans[i + n] == nums[i]` for `0 <= i < n` (0-indexed).
 
-Example 1:
+Specifically, `ans` is the concatenation of two `nums` arrays.
 
+Return the array `ans`.
+
+### Example 1
+
+```
 Input: nums = [1,2,1]
 Output: [1,2,1,1,2,1]
 Explanation: The array ans is formed as follows:
-- ans = [nums[0],nums[1],nums[2],nums[0],nums[1],nums[2]]
+- ans = [nums[0], nums[1], nums[2], nums[0], nums[1], nums[2]]
 - ans = [1,2,1,1,2,1]
-Example 2:
+```
 
+### Example 2
+
+```
 Input: nums = [1,3,2,1]
 Output: [1,3,2,1,1,3,2,1]
 Explanation: The array ans is formed as follows:
-- ans = [nums[0],nums[1],nums[2],nums[3],nums[0],nums[1],nums[2],nums[3]]
+- ans = [nums[0], nums[1], nums[2], nums[3], nums[0], nums[1], nums[2], nums[3]]
 - ans = [1,3,2,1,1,3,2,1]
+```
 
+### Solution
 
+```java
 class Solution {
     public int[] getConcatenation(int[] nums) {
-             int n = nums.length;
+        int n = nums.length;
         int[] ans = new int[2 * n];
-         for (int i = 0; i < n; i++) {
-            // System.out.println(i);
+        for (int i = 0; i < n; i++) {
             ans[i] = nums[i];
             ans[i + n] = nums[i];
         }
-        System.out.println(ans);
-return ans;
+        return ans;
     }
 }
+```
 
+---
 
-6. Pattern Recognition:-
+## 2. Pattern Recognition
 
-Ye question actually Array Copy Pattern ka question hai.
+This question uses the **Array Copy Pattern**.
 
-Future mein isi pattern ka use hoga:
+This pattern will be useful for the following problems:
 
-Merge Two Arrays
-Merge Sorted Arrays
-Rotate Array
-Duplicate Zeros
-Move Zeroes
-Reshape Matrix
+- Merge Two Arrays
+- Merge Sorted Arrays
+- Rotate Array
+- Duplicate Zeros
+- Move Zeroes
+- Reshape Matrix

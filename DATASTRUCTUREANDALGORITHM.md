@@ -60,3 +60,135 @@ This pattern will be useful for the following problems:
 - Duplicate Zeros
 - Move Zeroes
 - Reshape Matrix
+
+---
+
+## 3. 977. Squares of a Sorted Array
+
+### Problem Statement
+
+Given:
+
+A sorted integer array (can contain negative numbers).
+
+Task:
+
+Return a new array containing the square of every number, also sorted in non-decreasing order.
+
+Input:
+
+```
+[-4,-1,0,3,10]
+```
+
+Square:
+
+```
+[16,1,0,9,100]
+```
+
+Output:
+
+```
+[0,1,9,16,100]
+```
+
+### Approach
+
+**Two Pointers**
+
+#### Observation
+
+Negative numbers become positive after squaring.
+
+Example:
+
+- (-7)² = 49
+- 11² = 121
+
+The largest square will always be at either end of the array.
+
+That's why we compare:
+
+- Left element's square
+- Right element's square
+
+#### Step-by-step
+
+Array: `[-4,-1,0,3,10]`
+
+```
+left = 0
+right = 4
+index = 4
+
+16 vs 100
+100 is bigger
+result = [_,_,_,_,100]
+right--
+index--
+
+16 vs 9
+16 is bigger
+result = [_,_,_,16,100]
+left++
+index--
+
+1 vs 9
+9 is bigger
+result = [_,_,9,16,100]
+right--
+index--
+```
+
+#### Algorithm
+
+1. Create result array.
+2. `left = 0`
+3. `right = n-1`
+4. `index = n-1`
+5. While `left <= right`:
+   - `leftSquare = arr[left] * arr[left]`
+   - `rightSquare = arr[right] * arr[right]`
+   - If `leftSquare >= rightSquare`:
+     - `result[index] = leftSquare`
+     - `left++`
+   - Else:
+     - `result[index] = rightSquare`
+     - `right--`
+   - `index--`
+6. Return result
+
+### Complexity Analysis
+
+- **Time Complexity:** O(n)
+- **Space Complexity:** O(n)
+
+### Solution
+
+```java
+import java.util.Arrays;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {-4, -1, 0, 3, 10};
+        int n = arr.length;
+        int[] result = new int[n];
+        int left = 0;
+        int right = arr.length - 1;
+        int index = arr.length - 1;
+        while (left <= right) {
+            if (arr[left] * arr[left] >= arr[right] * arr[right]) {
+                result[index] = arr[left] * arr[left];
+                left++;
+                index--;
+            } else {
+                result[index] = arr[right] * arr[right];
+                right--;
+                index--;
+            }
+        }
+        System.out.println(Arrays.toString(result));
+    }
+}
+```
